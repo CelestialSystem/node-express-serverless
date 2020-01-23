@@ -1,0 +1,19 @@
+{
+  "name": "serverless-poc",
+  "version": "1.0.0",
+  "description": "serverless-poc using serverless-http",
+  "main": "server.js",
+  "scripts": {
+    "development": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arghajeet Bhattacharya",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2",
+    "serverless-http": "^2.3.0"
+  }
+}
