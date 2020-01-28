@@ -12,10 +12,14 @@ functions:
     handler: server.handler
     events:
       - http:
-          path: /
-          method: ANY
+          path: /api/hello
+          method: GET
           cors: true
       - http:
-          path: /{proxy+}
-          method: ANY
+          path: /api/get-value/{proxy+}
+          method: GET
+          cors: true
+      - http:
+          path: /api/get-user-list
+          method: GET
           cors: true

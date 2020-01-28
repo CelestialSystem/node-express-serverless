@@ -20,29 +20,20 @@ process
     process.exit(1);
   });
 
-app.get("/api/hello", (req, res) => {
-    res.send({message: "Hello World!"});
-});
+// Using a single function to handle multiple signals
+function handle(signal) {
+  console.log(`Received ${signal}`);
+}
 
-app.get("/api/get-value/:index", async (req, res) => {
-    const {index} = req.params;
-    console.log("index: ", index);
-    const fibonacciValue = await fibonacci(index);
-    res.send({message: `Fibonacci value: ${fibonacciValue}`});
+process.on("SIGINT", () => {
+  console.log(`exited as signal SIGINT`);
+  process.exit(0);
 });
+process.on("SIGTERM", handle);
+process.on("exit", handle);
 
-function fibonacci(num){
-    var a = 1, b = 0, temp;
-  
-    while (num >= 0){
-      temp = a;
-      a = a + b;
-      b = temp;
-      num--;
-    }
-  
-    return b;
-  }
+require("./modules/sample")(app);
+require("./modules/user")(app);
 
 app.listen(3010, () => {
   console.info(
